@@ -1,30 +1,34 @@
-import { Component, OnInit } from '@angular/core';
-import { regioniService } from './regioni.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { provinceService } from '../services/province.service';
+import {RegioniInterface} from '../interfaces/regioniInterface';
 
+declare var $:any;
 @Component({
-  selector: 'app-regione',
+  selector: 'li[app-regione]',
   templateUrl: './regione.component.html',
   styleUrls: ['./regione.component.scss']
 })
 
 export class RegioneComponent implements OnInit {
-  regioni = [];
-  isShown:any = {};
+  @Input() regione: RegioniInterface;
+  @Input() province
+  @Output('provinceDetailInfo') provinceDetail = new EventEmitter();
+  isShown:boolean = false;
+  provinceArray:Array<any> = [];
 
-  constructor(private service: regioniService) {}
-
+  constructor(private service: provinceService) {}
   ngOnInit() {
-    this.regioni = this.service.getRegioni();
-  } 
-  
-  showFn = function(codice_regione){
-    
-    // Object.keys(this.isShown).forEach(h => {
-    //   this.isShown[h] = false;
-    // });
-    // this.isShown[codice_regione] = true;
-
-    
+    $('[data-toggle="tooltip"]').tooltip({
+      selector: ".regione_data_detail"
+    });   
   }
 
+  showFn = function(){
+    this.isShown = !this.isShown;
+    return false; 
+  }
+
+  getProvinciaDetail(){
+    this.provinceArray = this.service.getProvince(this.regione.codice_regione);
+  }
 }

@@ -1,16 +1,24 @@
-<ul class="lista-regioni list-group">
-  <li *ngFor="let regione of regioni">
-    <div class="info_box">
-      <span class="info_box__regione_name"><a href="#" (click)="showFn(regione.codice_regione)">{{regione.denominazione_regione}}</a></span>
-      <span class="info_box__regione_totale_positivi">Totale positivi: {{regione.totale_attualmente_positivi}}</span>
-    </div>
+<div class="regione" data-toggle="tooltip" data-html="true" data-placement="bottom">
+  <div class="regione_data" id="{{regione.codice_regione}}" >
+    <span class="regione_data__regione_name"><a href="#" (click)="showFn(); getProvinciaDetail(regione.codice_regione)">{{regione.denominazione_regione}}</a></span>
+    <span class="regione_data__regione_totale_positivi">Totale positivi: {{regione.totale_attualmente_positivi}}</span>
+  </div>
 
-    <div id="{{regione.codice_regione}}" class="info_box_detail" [hidden]="isShown[regione.codice_regione]">
-      <span class="detail_info_box__nuovi_attualmente_positivi">ad oggi positivi: {{regione.nuovi_attualmente_positivi}}</span>
-      <span class="detail_info_box__nuovi_dimessi_guariti">guariti: {{regione.dimessi_guariti}}</span>
-      <span class="detail_info_box__nuovi_deceduti">deceduti: {{regione.deceduti}}</span>
-      <span class="detail_info_box__nuovi_totale_casi">totale casi:{{regione.totale_casi}}</span>
-      <span class="detail_info_box__nuovi_tamponi">tamponi effettuati: {{regione.nuovi_tamponi}}</span>
-    </div>
-  </li>
-</ul>
+  <div class="regione_data_detail" [hidden]="!isShown">
+    <span class="regione_data__nuovi_attualmente_positivi">ad oggi positivi: {{regione.nuovi_attualmente_positivi}}</span>
+    <span class="regione_data__nuovi_dimessi_guariti">guariti: {{regione.dimessi_guariti}}</span>
+    <span class="regione_data__nuovi_deceduti">deceduti: {{regione.deceduti}}</span>
+    <span class="regione_data__nuovi_totale_casi">totale casi: {{regione.totale_casi}}</span>
+    <span class="regione_data__nuovi_tamponi">tamponi effettuati: {{regione.tamponi}}</span>
+  </div>
+
+  <div class="province" [hidden]="!isShown">
+    <ul class="lista-province list-group">
+      <li app-province *ngFor="let provinciaElement of provinceArray" 
+        [province]='provinciaElement'
+        [codice_regione]='regione.codice_regione'
+        >
+      </li>     
+    </ul>
+  </div>
+</div>
