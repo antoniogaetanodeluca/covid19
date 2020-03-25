@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { provinceService } from '../services/province.service';
-import {RegioniInterface} from '../interfaces/regioniInterface';
+import { RegioniInterface } from '../interfaces/regioni-interface';
+import { ProvinceInterface } from '../interfaces/province-interface';
 
 declare var $:any;
 @Component({
@@ -11,8 +12,9 @@ declare var $:any;
 
 export class RegioneComponent implements OnInit {
   @Input() regione: RegioniInterface;
-  @Input() province
+  @Input() province: ProvinceInterface;
   @Output('provinceDetailInfo') provinceDetail = new EventEmitter();
+
   isShown:boolean = false;
   provinceArray:Array<any> = [];
 

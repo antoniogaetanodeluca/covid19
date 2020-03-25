@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {RegioniInterface} from "../interfaces/regioniInterface";
+import {RegioniInterface} from "../interfaces/regioni-interface";
 
 @Injectable()
 

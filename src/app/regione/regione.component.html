@@ -4,7 +4,7 @@
     <span class="regione_data__regione_totale_positivi">Totale positivi: {{regione.totale_attualmente_positivi}}</span>
   </div>
 
-  <div class="regione_data_detail" [hidden]="!isShown">
+  <div class="regione_data_detail" *ngIf="isShown">
     <span class="regione_data__nuovi_attualmente_positivi">ad oggi positivi: {{regione.nuovi_attualmente_positivi}}</span>
     <span class="regione_data__nuovi_dimessi_guariti">guariti: {{regione.dimessi_guariti}}</span>
     <span class="regione_data__nuovi_deceduti">deceduti: {{regione.deceduti}}</span>
@@ -12,7 +12,7 @@
     <span class="regione_data__nuovi_tamponi">tamponi effettuati: {{regione.tamponi}}</span>
   </div>
 
-  <div class="province" [hidden]="!isShown">
+  <div class="province" *ngIf="isShown">
     <ul class="lista-province list-group">
       <li app-province *ngFor="let provinciaElement of provinceArray" 
         [province]='provinciaElement'

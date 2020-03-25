@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { regioniService } from '../services/regioni.service';
-import {RegioniInterface} from '../interfaces/regioniInterface';
+import { RegioniInterface } from '../interfaces/regioni-interface';
 
 @Component({
   selector: 'app-regioni',
