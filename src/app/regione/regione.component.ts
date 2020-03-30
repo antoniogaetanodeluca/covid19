@@ -3,7 +3,6 @@ import { provinceService } from '../services/province.service';
 import { RegioniInterface } from '../interfaces/regioni-interface';
 import { ProvinceInterface } from '../interfaces/province-interface';
 
-declare var $:any;
 @Component({
   selector: 'li[app-regione]',
   templateUrl: './regione.component.html',
@@ -20,9 +19,7 @@ export class RegioneComponent implements OnInit {
 
   constructor(private service: provinceService) {}
   ngOnInit() {
-    $('[data-toggle="tooltip"]').tooltip({
-      selector: ".regione_data_detail"
-    });   
+     
   }
 
   showFn = function(){
@@ -30,7 +27,9 @@ export class RegioneComponent implements OnInit {
     return false; 
   }
 
-  getProvinciaDetail(){
+  getProvinciaDetail(codice_regione){
+    this.showFn();
     this.provinceArray = this.service.getProvince(this.regione.codice_regione);
+    return false;
   }
 }

@@ -1,6 +1,6 @@
 <div class="regione" data-toggle="tooltip" data-html="true" data-placement="bottom">
   <div class="regione_data" id="{{regione.codice_regione}}" >
-    <span class="regione_data__regione_name"><a href="#" (click)="showFn(); getProvinciaDetail(regione.codice_regione)">{{regione.denominazione_regione}}</a></span>
+    <span class="regione_data__regione_name"><a href="#" (click)="getProvinciaDetail(regione.codice_regione)">{{regione.denominazione_regione}}</a></span>
     <span class="regione_data__regione_totale_positivi">Totale positivi: {{regione.totale_attualmente_positivi}}</span>
   </div>
 

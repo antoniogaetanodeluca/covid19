@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { regioniService } from '../services/regioni.service';
-import { RegioniInterface } from '../interfaces/regioni-interface';
-
+import { AndamentoNazionaleService } from '../services/andamento-nazionale.service';
+import { AndamentoNazionaleInterface } from '../interfaces/andamento-nazionale-interface';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
+
 export class HeaderComponent implements OnInit {
-  regioni: Array<RegioniInterface>;
-  
-  constructor(private service: regioniService) {}
+  andamentoDati: Array<AndamentoNazionaleInterface>;
+
+  constructor(private service: AndamentoNazionaleService) {}
 
   ngOnInit() {
-    this.regioni = this.service.getRegioni();    
+    this.andamentoDati = this.service.getAndamento();    
   }
 
 }

@@ -9,13 +9,11 @@ import { RegioniInterface } from '../interfaces/regioni-interface';
 })
 export class RegioniComponent implements OnInit {
   regioni: Array<RegioniInterface>;
-
+  
   constructor(private service: regioniService) {}
 
   ngOnInit() {
     this.regioni = this.service.getRegioni();    
-  }
-
-  
+  }  
 }
 
