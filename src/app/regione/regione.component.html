@@ -1,18 +1,29 @@
-<div class="regione" data-toggle="tooltip" data-html="true" data-placement="bottom">
-  <div class="regione_data" id="{{regione.codice_regione}}" >
-    <span class="regione_data__regione_name"><a href="#" (click)="getProvinciaDetail(regione.codice_regione)">{{regione.denominazione_regione}}</a></span>
-    <span class="regione_data__regione_totale_positivi">Totale positivi: {{regione.totale_attualmente_positivi}}</span>
+<div class="regione">
+  <div class="regione_data">
+    <span class="regione_data__regione_name">
+      <a href="#" 
+      (click)="getProvinciaDetail(regione.codice_regione)" 
+      [ngbPopover]="popContent" 
+      triggers="mouseenter:mouseleave"
+      placement="left"
+      popoverTitle="{{regione.denominazione_regione}}">{{regione.denominazione_regione}}</a>
+    </span>
+
+    <span class="regione_data__regione_totale_numero">{{regione.totale_attualmente_positivi}}</span>
   </div>
 
-  <div class="regione_data_detail" *ngIf="isShown">
-    <span class="regione_data__nuovi_attualmente_positivi">ad oggi positivi: {{regione.nuovi_attualmente_positivi}}</span>
-    <span class="regione_data__nuovi_dimessi_guariti">guariti: {{regione.dimessi_guariti}}</span>
-    <span class="regione_data__nuovi_deceduti">deceduti: {{regione.deceduti}}</span>
-    <span class="regione_data__nuovi_totale_casi">totale casi: {{regione.totale_casi}}</span>
-    <span class="regione_data__nuovi_tamponi">tamponi effettuati: {{regione.tamponi}}</span>
-  </div>
+  <ng-template #popContent>
+    <div class="regione_data_detail">
+      <span class="regione_data__nuovi_attualmente_positivi">ad oggi positivi: <b class="positivi">{{regione.nuovi_attualmente_positivi}}</b></span>
+      <span class="regione_data__nuovi_dimessi_guariti">guariti: <b class="guariti">{{regione.dimessi_guariti}}</b></span>
+      <span class="regione_data__nuovi_deceduti">deceduti: <b class="deceduti">{{regione.deceduti}}</b></span>
+      <span class="regione_data__nuovi_totale_casi">totale casi: <b>{{regione.totale_casi}}</b></span>
+      <span class="regione_data__nuovi_tamponi">tamponi effettuati: <b>{{regione.tamponi}}</b></span>
+    </div>
+  </ng-template>
 
   <div class="province" *ngIf="isShown">
+    <span class="subtitle text-right">Totale casi</span>
     <ul class="lista-province list-group">
       <li app-province *ngFor="let provinciaElement of provinceArray" 
         [province]='provinciaElement'

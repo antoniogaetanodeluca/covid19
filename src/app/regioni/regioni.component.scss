@@ -8,3 +8,33 @@ ul.lista-regioni {
     border-bottom: 1px solid #e2e2e2;
   }
 }
+
+.regioni-box__heading {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.regioni-box a {  
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: #13969D
+  }
+}
+
+.arrow svg {
+  fill: #4E4E4E;
+  width: 30px;
+  height: auto;
+  transform: rotate(180deg);
+  margin-left: 10px;
+}
+
+.totale-title {
+
+}

@@ -14,6 +14,8 @@ import { HeaderComponent } from './header/header.component';
 import { regioniService } from './services/regioni.service';
 import { provinceService } from './services/province.service';
 import { AndamentoNazionaleService } from './services/andamento-nazionale.service';
+import { FooterComponent } from './footer/footer.component';
+import { AndamentoComponent } from './andamento/andamento.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { AndamentoNazionaleService } from './services/andamento-nazionale.servic
     RegioniComponent,
     ProvinceComponent,
     HeaderComponent,
+    FooterComponent,
+    AndamentoComponent,
   ],
   imports: [
     BrowserModule,

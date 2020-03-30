@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AndamentoNazionaleService } from '../services/andamento-nazionale.service';
-import { AndamentoNazionaleInterface } from '../interfaces/andamento-nazionale-interface';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,12 +6,12 @@ import { AndamentoNazionaleInterface } from '../interfaces/andamento-nazionale-i
 })
 
 export class HeaderComponent implements OnInit {
-  andamentoDati: Array<AndamentoNazionaleInterface>;
+ngOnInit(){
 
-  constructor(private service: AndamentoNazionaleService) {}
+}
 
-  ngOnInit() {
-    this.andamentoDati = this.service.getAndamento();    
-  }
+constructor(){
+  
+}
 
 }

@@ -1,0 +1,23 @@
+.andamento {
+  margin-bottom: 60px;
+  border-bottom: 1px solid #E5E5E5;
+
+  &__numero-casi {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__positivi {
+    color: #FF972B;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 35px;
+  }
+
+  &__incremento {
+    &-data {
+      font-size: 12px;
+    }
+  }
+}

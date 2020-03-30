@@ -9,7 +9,8 @@ import { RegioniInterface } from '../interfaces/regioni-interface';
 })
 export class RegioniComponent implements OnInit {
   regioni: Array<RegioniInterface>;
-  
+  public isCollapsed = false;
+
   constructor(private service: regioniService) {}
 
   ngOnInit() {

@@ -1,8 +1,4 @@
-.regione { 
-  & span[class^="regione_data__"]{
-    margin-right: 15px;
-  }
-
+.regione {
   a {
     text-decoration: none;
     font-weight: bold;
@@ -12,15 +8,75 @@
 .regione_data {
   display: flex;
   justify-content: space-between;
+
+  &__regione_name a {
+    color: #828282;
+    font-weight: 300;
+
+    &:hover {
+      color: #13969D;
+    }
+  }
 }
 
-.regione_data_detail {
-  background-color: #f2f2f2;
-  padding: 10px;
-  margin-top: 10px;
-
+.regione_data_detail { 
+  span {
+    color: #828282;
+    font-weight: 300;
+  }
   & span[class^="regione_data__"]{
     display: block;
     font-size: 13px;
+  }
+
+  b {
+    color: #4E4E4E;
+    font-weight: 700;
+  }
+
+  b.deceduti {
+    color: #FF5060;
+  }
+
+  b.guariti {
+    color: #00CE96;
+  }
+
+  b.positivi {
+    color: #FF972B;
+  }
+}
+
+//province
+.province {
+  background-color: #fff;
+  padding: 7px 10px;
+  margin-top: 10px;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {    
+    color: #828282;    
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+
+    &:last-child {
+      
+    }
+  }
+
+  .subtitle {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    color: #4E4E4E;
+    text-transform: uppercase;
+    margin-bottom: 5px;
   }
 }
