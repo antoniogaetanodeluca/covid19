@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AndamentoComponent } from './andamento/andamento.component';
 import { ChartAndamentoComponent } from './chart-andamento/chart-andamento.component';
+
 //services
 import { regioniService } from './services/regioni.service';
 import { provinceService } from './services/province.service';

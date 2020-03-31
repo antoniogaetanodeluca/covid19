@@ -1,6 +1,6 @@
 <footer class="footer">
   <span class="footer__update">
-    <p>Dati aggiornati al <span class="font-weight-bold">{{andamentoDati[0].data | date: 'dd/MM/yyyy, h:mm a'}}</span></p>
+    <p *ngIf="andamentoDati[0]">Dati aggiornati al <span class="font-weight-bold">{{andamentoDati[0].data | date: 'dd/MM/yyyy, h:mm a'}}</span></p>
   </span>
 
   <span class="footer_info">

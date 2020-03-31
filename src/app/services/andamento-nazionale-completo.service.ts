@@ -12,10 +12,13 @@ export class AndamentoNazionaleCompletoService {
 
   constructor(private http: HttpClient){
     this.http.get(this.repositoryAndamentoCompleto).toPromise().then(
-      data => {
-      for (let key in data)
-          if (data.hasOwnProperty(key))
-          this.andamentoDatiNazionaleCompleto.push(data[key]);
+      data => {      
+        for (let key in data){
+          if (data.hasOwnProperty(key)){
+            this.andamentoDatiNazionaleCompleto.push(data[key]);
+          }
+        }
+        this.andamentoDatiNazionaleCompleto.slice(0, 2);
       }
   )
 }

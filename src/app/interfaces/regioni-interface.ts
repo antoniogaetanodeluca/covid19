@@ -9,7 +9,7 @@ export interface RegioniInterface {
   terapia_intensiva;
   totale_ospedalizzati;
   isolamento_domiciliare;
-  totale_attualmente_positivi;
+  totale_positivi;
   nuovi_attualmente_positivi;
   dimessi_guariti;
   deceduti;
