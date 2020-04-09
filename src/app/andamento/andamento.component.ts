@@ -13,7 +13,18 @@ export class AndamentoComponent implements OnInit {
   constructor(private service: AndamentoNazionaleService) {}
 
   ngOnInit(): void {
-    this.andamento = this.service.getAndamento();
+    this.service.getAndamento().then(
+      andamentoResponse => {
+        this.displayAndamento(andamentoResponse),
+        err => console.log(err),
+        () => console.log('Chiamata eseguita correttamente.')
+      }
+    );
+  }
+
+  displayAndamento(array){
+    this.andamento = array;
+    return this.andamento;
   }
 
 }

@@ -1,10 +1,10 @@
-<div class="andamento">
-  <h2 class="text-uppercase">totale positivi</h2>
-  <div class="andamento__numero-casi">
-    <span class="andamento__positivi" *ngIf="andamento[0]">{{andamento[0].totale_positivi}}</span>
-    <span class="andamento__incremento">
-      <span class="andamento__incremento-positivi" *ngIf="andamento[0]">+ {{andamento[0].nuovi_positivi}} </span>
-      <span class="andamento__incremento-data">rispetto a ieri</span>
+<div class="totale-andamento component">
+  <h2 class="text-uppercase"><i class="fas fa-lungs-virus"></i> totale positivi</h2>
+  <div class="totale-andamento__numero-casi">
+    <span class="totale-andamento__positivi" *ngIf="andamento">{{andamento[0].totale_positivi}}</span>
+    <span class="totale-andamento__incremento">
+      <span class="totale-andamento__incremento-positivi" *ngIf="andamento">+{{andamento[0].variazione_totale_positivi}} </span>
+      <span class="totale-andamento__incremento-data">rispetto a ieri</span>
     </span>
   </div>
 </div>

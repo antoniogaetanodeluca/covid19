@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ChartsModule } from 'ng2-charts';
 import { AndamentoNazionaleCompletoService } from '../services/andamento-nazionale-completo.service';
 import * as _ from 'lodash';
+import {Observable,of, from} from 'rxjs';
+import { AndamentoNazionaleInterface } from "../interfaces/andamento-nazionale-interface";
+import { AndamentoNazionaleService } from '../services/andamento-nazionale.service';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-chart-andamento',
@@ -10,69 +14,73 @@ import * as _ from 'lodash';
 })
 
 export class ChartAndamentoComponent implements OnInit {
-
+  andamentoCompleto: Array<AndamentoNazionaleInterface> = [];
+  
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
 
-  public barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-  public barChartType = 'bar';
+  public barChartLabels = [];
+  public barChartData = [];
+  public barChartType = 'line';
   public barChartLegend = true;
-
-  public barChartData = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-  ];
-  private andamentoCompleto: Array<any> = [];
-   arrayCopia = [];
+    
   constructor(private service: AndamentoNazionaleCompletoService){}
-
-  ngOnInit() {
-    this.andamentoCompleto = this.service.getAndamentoCompleto();
-     this.arrayCopia = this.andamentoCompleto
-    var dateToday = new Date().toISOString().slice(0, 19);
-    var ar = [
-      {
-        "data": "2020-02-24T18:00:00",
-        "stato": "ITA",
-        "ricoverati_con_sintomi": 101,
-        "terapia_intensiva": 26,
-        "totale_ospedalizzati": 127,
-        "isolamento_domiciliare": 94,
-        "totale_positivi": 221,
-        "variazione_totale_positivi": 0,
-        "nuovi_positivi": 221,
-        "dimessi_guariti": 1,
-        "deceduti": 7,
-        "totale_casi": 229,
-        "tamponi": 4324,
-        "note_it": "",
-        "note_en": ""
-    },
-    {
-        "data": "2020-02-25T18:00:00",
-        "stato": "ITA",
-        "ricoverati_con_sintomi": 114,
-        "terapia_intensiva": 35,
-        "totale_ospedalizzati": 150,
-        "isolamento_domiciliare": 162,
-        "totale_positivi": 311,
-        "variazione_totale_positivi": 90,
-        "nuovi_positivi": 93,
-        "dimessi_guariti": 1,
-        "deceduti": 10,
-        "totale_casi": 322,
-        "tamponi": 8623,
-        "note_it": "",
-        "note_en": ""
-    }
-    ];
-    ar.forEach((element, index, array) => {
-      console.log(element.data);
-    });
-    console.log(JSON.stringify(arrayCopia));
-
+  
+  async ngOnInit(){
+    await this.service.getAndamentoCompleto().then(
+      andamento => {
+        this.displayChartAndamentoNazionale(andamento),
+        err => console.log(err),
+        () => console.log('Chiamata eseguita correttamente.')
+      }
+    );    
   }
+
+  displayChartAndamentoNazionale(ar){
+    let jsonObjPositivi;
+    let jsonObjGuariti;
+    let jsonObjDeceduti;
+
+    let resultPositivi = {data: [], label: 'Positivi', backgroundColor: 'rgba(255, 151, 43, 0.7)', borderWidth: 1, borderColor:'#ff972b', fill: true, borderCapStyle: "yes", hoverBackgroundColor: "yes"};
+    let resultGuariti = {data: [], label: 'Guariti', backgroundColor: 'rgba(0, 206, 150, 0.8)', borderWidth: 1, borderColor:'#03936C', fill: true, borderCapStyle: "yes"};
+    let resultDeceduti = {data: [], label: 'Deceduti', backgroundColor: 'rgba(255, 80, 96, 0.9)' , borderWidth: 1, borderColor:'#FF5060', fill: true, borderCapStyle: "yes"};
+
+    var itemsToIterate = ar.reverse().slice(0, 7);
+    for (let i = 0; i<itemsToIterate.length; i++){      
+      let day = ar[i].data.substr(8, 2);//estraggo il giorno dalle ultime 7 date dell'oggetto passato dalla promise
+      this.barChartLabels.push(day);
+
+      //popolo l'oggetto dei positivi
+      jsonObjPositivi = ar[i].totale_positivi;
+      resultPositivi.data.push(jsonObjPositivi);
+
+      //popolo l'oggetto dei guariti
+      jsonObjGuariti = ar[i].dimessi_guariti;
+      resultGuariti.data.push(jsonObjGuariti);
+
+      //popolo l'oggetto dei deceduti
+      jsonObjDeceduti = ar[i].deceduti;
+      resultDeceduti.data.push(jsonObjDeceduti);
+    }
+    this.barChartLabels.reverse(); //ordino al contrario l'array per mostrarlo sul grafico in ordine crescente
+    this.barChartData.push(resultPositivi, resultGuariti, resultDeceduti);
+    
+    //inizializzo chart.js
+    let ctx = 'chartAndamentoSettimanale';
+    let chartAndamentoSettimanale = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: this.barChartLabels,
+        datasets: this.barChartData
+      },
+      options: this.barChartOptions
+    });
+
+    this.andamentoCompleto = ar[0].data;
+    return this.andamentoCompleto;
+  }
+  
 
 }

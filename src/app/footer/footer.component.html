@@ -1,12 +1,12 @@
 <footer class="footer">
   <span class="footer__update">
-    <p *ngIf="andamentoDati[0]">Dati aggiornati al <span class="font-weight-bold">{{andamentoDati[0].data | date: 'dd/MM/yyyy, h:mm a'}}</span></p>
+    <p *ngIf="response">Dati aggiornati al:<span class="font-weight-bold d-block">{{response[0].data | date: 'dd/MM/yyyy, h:mm a'}}</span></p>
   </span>
 
   <span class="footer_info">
     <p>Informazioni fornite dal Ministero della Salute.<br />
     Elaborazione e gestione dati a cura del Dipartimento della Protezione Civile.</p> 
-    <p>coded with <span class="angular">Angular</span> + <span class="bootstrap">Bootstrap</span></p>   
+    <p>coded with <i class="fa fa-heart"></i> and <span class="angular">Angular</span>+<span class="bootstrap">Bootstrap</span><span class="d-block">by <a href="http://antoniodeluca.net" target="_blank">antoniodeluca.net</a></span></p>   
   </span>
   
 </footer>

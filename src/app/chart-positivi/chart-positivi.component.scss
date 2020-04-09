@@ -1,0 +1,22 @@
+.response-chart {
+  &__box:first-child {
+    margin-bottom: 30px;
+  }
+}
+h6 {
+  margin-bottom: 0;
+}
+.label-deceduti,
+.label-guariti {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 40px;
+}
+
+.label-deceduti {
+  color: #FF5060;
+}
+
+.label-guariti {
+  color: #00CE96;
+}

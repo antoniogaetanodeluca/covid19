@@ -18,6 +18,10 @@ import { regioniService } from './services/regioni.service';
 import { provinceService } from './services/province.service';
 import { AndamentoNazionaleService } from './services/andamento-nazionale.service';
 import { AndamentoNazionaleCompletoService } from './services/andamento-nazionale-completo.service';
+import { ChartPositiviComponent } from './chart-positivi/chart-positivi.component';
+import { ChartIsolamentoDomiciliareComponent } from './chart-isolamento-domiciliare/chart-isolamento-domiciliare.component';
+import { NoteComponent } from './note/note.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { AndamentoNazionaleCompletoService } from './services/andamento-nazional
     FooterComponent,
     AndamentoComponent,
     ChartAndamentoComponent,
+    ChartPositiviComponent,
+    ChartIsolamentoDomiciliareComponent,
+    NoteComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

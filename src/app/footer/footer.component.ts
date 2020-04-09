@@ -9,12 +9,23 @@ import { AndamentoNazionaleInterface } from '../interfaces/andamento-nazionale-i
 })
 export class FooterComponent implements OnInit {
 
-  andamentoDati: Array<AndamentoNazionaleInterface>;
+  response: Array<AndamentoNazionaleInterface>;
 
   constructor(private service: AndamentoNazionaleService) {}
 
-  ngOnInit() {
-    this.andamentoDati = this.service.getAndamento();    
+  async ngOnInit(){
+    await this.service.getAndamento().then(
+      andamentoFooter => {
+        this.displayAndamento(andamentoFooter),
+        err => console.log(err),
+        () => console.log('Chiamata eseguita correttamente.')
+      }
+    );    
+  }
+
+  displayAndamento(array){
+    this.response = array;
+    return this.response;
   }
 
 }

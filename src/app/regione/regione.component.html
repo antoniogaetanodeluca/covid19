@@ -14,10 +14,13 @@
 
   <ng-template #popContent>
     <div class="regione_data_detail">
-      <span class="regione_data__nuovi_attualmente_positivi">ad oggi positivi: <b class="positivi">{{regione.nuovi_attualmente_positivi}}</b></span>
+      <span class="regione_data__nuovi_attualmente_positivi">ad oggi positivi: <b class="positivi">{{regione.totale_positivi}}</b></span>
+      <span class="regione_data__nuovi_totale_casi">positivi rispetto a ieri: 
+        <span *ngIf="regione.variazione_totale_positivi > 1"><b>+</b></span>
+        <b>{{regione.variazione_totale_positivi}}</b>
+      </span>
       <span class="regione_data__nuovi_dimessi_guariti">guariti: <b class="guariti">{{regione.dimessi_guariti}}</b></span>
       <span class="regione_data__nuovi_deceduti">deceduti: <b class="deceduti">{{regione.deceduti}}</b></span>
-      <span class="regione_data__nuovi_totale_casi">totale casi: <b>{{regione.totale_casi}}</b></span>
       <span class="regione_data__nuovi_tamponi">tamponi effettuati: <b>{{regione.tamponi}}</b></span>
     </div>
   </ng-template>

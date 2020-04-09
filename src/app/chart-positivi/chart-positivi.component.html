@@ -1,0 +1,11 @@
+<div class="response-chart">
+  <div class="response-chart__box component">
+    <h6>Guariti</h6>
+    <span *ngIf="response" class="label-guariti">{{response[0].dimessi_guariti}}</span>
+  </div>
+  
+  <div class="response-chart__box component">
+    <h6>Deceduti</h6>
+    <span *ngIf="response" class="label-deceduti">{{response[0].deceduti}}</span>
+  </div>
+</div>

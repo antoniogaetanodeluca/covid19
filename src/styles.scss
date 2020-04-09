@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+a {
+  color: #13969D!important;
+}
+.component {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 50px;
+  margin-bottom: 30px;
+
+  h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+  }
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #00969C!important;
+  border-color: #00969C!important;
+
+  &:hover {
+    background-color: #007C81!important;
+    border-color: #007C81!important;
+    
+  }
+}

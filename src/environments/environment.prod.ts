@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apirurl: 'http://wwww.antoniodeluca.net/covid19'
 };
