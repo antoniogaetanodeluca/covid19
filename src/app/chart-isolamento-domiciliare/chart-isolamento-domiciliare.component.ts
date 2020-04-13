@@ -22,6 +22,11 @@ export class ChartIsolamentoDomiciliareComponent implements OnInit {
     responsive: true,
     legend: {
       display: false
+    },
+    scales: {
+      yAxes: [{
+        display: false
+      }]
     }
   };
 

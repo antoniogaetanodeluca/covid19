@@ -1,6 +1,30 @@
 .response-chart {
+  display: flex;
+  flex-direction: row;
+
+  @media screen and (min-width: 992px){
+    flex-direction: column;
+  }
+
+  &__box {
+    flex: auto;
+  }
+
   &__box:first-child {
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+
+    @media screen and (min-width: 992px){
+      margin-bottom: 30px;
+      margin-right: 0;
+    }
+  }
+
+  &__box:nth-last-child(2){
+    margin-left: 15px;
+    @media screen and (min-width: 992px){
+      margin-right: 0;
+    }
   }
 }
 h6 {
@@ -9,8 +33,13 @@ h6 {
 .label-deceduti,
 .label-guariti {
   font-weight: bold;
-  font-size: 40px;
-  line-height: 40px;
+  font-size: 20px;
+  line-height: 20px;
+
+  @media screen and (min-width: 992px){
+    font-size: 40px;
+    line-height: 40px;
+  }
 }
 
 .label-deceduti {

@@ -18,7 +18,12 @@ export class ChartAndamentoComponent implements OnInit {
   
   public barChartOptions = {
     scaleShowVerticalLines: false,
-    responsive: true
+    responsive: true,
+    scales: {
+      yAxes: [{
+        display: false
+      }]
+    }
   };
 
   public barChartLabels = [];

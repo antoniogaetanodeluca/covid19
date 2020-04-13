@@ -8,14 +8,22 @@
 
   &__positivi {
     color: #FF972B;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: bold;
-    line-height: 35px;
+    line-height: 24px;
+
+    @media screen and (min-width: 992px){
+      font-size: 30px;
+      line-height: 35px;
+    }
   }
 
   &__incremento {
     &-data {
       font-size: 12px;
+      @media screen and (min-width: 992px){
+      font-size: 14px;
+      }
     }
   }
 }

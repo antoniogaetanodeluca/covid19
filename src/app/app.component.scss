@@ -8,11 +8,16 @@ aside {
 
 main {
   background: #F8F8F8;
-  padding: 60px 30px;
+  padding: 30px 15px;
 
-  @media screen and (min-width: 960px){
+  @media screen and (min-width: 992px){
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
+    padding: 60px 30px;
   }
+}
+
+.footer-mobile {
+  padding: 0 20px;
 }
 

@@ -1,7 +1,7 @@
 <div class="wrapper row">   
   <aside class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
     <app-header></app-header>
-    <app-footer></app-footer>
+    <div class="d-none d-md-block"><app-footer class="desktop"></app-footer></div>
   </aside>
 
   <main class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
@@ -28,6 +28,8 @@
         <app-regioni></app-regioni>  
       </div>
     </div>
-  </main>  
+  </main>
+
+  <div class="d-block d-sm-none footer-mobile"><app-footer></app-footer></div>
 </div>  
 

@@ -1,14 +1,30 @@
 a {
   color: #13969D!important;
 }
+
 .component {
   background-color: #fff;
-  padding: 30px;
-  border-radius: 50px;
-  margin-bottom: 30px;
+  padding: 15px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+
+  @media screen and (min-width: 992px){
+    border-radius: 25px;
+    padding: 30px;
+    border-radius: 50px;
+    margin-bottom: 30px;
+  }
 
   h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    @media screen and (min-width: 992px){
+      font-size: 2rem;
+    }
+
   }
 }
 
