@@ -1,6 +1,6 @@
 <div class="regione">
   <div class="regione_data">
-    <span class="regione_data__regione_name">
+    <span class="regione_data__regione_name regione_data__regione_name--desktop">
       <a href="#" 
       (click)="getProvinciaDetail(regione.codice_regione)" 
       [ngbPopover]="popContent" 
@@ -11,6 +11,8 @@
 
     <span class="regione_data__regione_totale_numero">{{regione.totale_positivi}}</span>
   </div>
+
+  
 
   <ng-template #popContent>
     <div class="regione_data_detail">
@@ -26,7 +28,22 @@
   </ng-template>
 
   <div class="province" *ngIf="isShown">
-    <span class="subtitle text-right">Totale casi</span>
+    <div class="regione_data_detail regione_data_detail--mobile d-block d-sm-none">
+      <span class="regione_data__nuovi_attualmente_positivi">ad oggi positivi: <b class="positivi">{{regione.totale_positivi}}</b></span>
+      <span class="regione_data__nuovi_totale_casi">positivi rispetto a ieri: 
+        <span *ngIf="regione.variazione_totale_positivi > 1"><b>+</b></span>
+        <b>{{regione.variazione_totale_positivi}}</b>
+      </span>
+      <span class="regione_data__nuovi_dimessi_guariti">guariti: <b class="guariti">{{regione.dimessi_guariti}}</b></span>
+      <span class="regione_data__nuovi_deceduti">deceduti: <b class="deceduti">{{regione.deceduti}}</b></span>
+      <span class="regione_data__nuovi_tamponi">tamponi effettuati: <b>{{regione.tamponi}}</b></span>
+    </div>
+
+    <div class="province__heading">
+      <span class="subtitle">Province</span>
+      <span class="subtitle">Totale casi</span>
+    </div>
+    
     <ul class="lista-province list-group">
       <li app-province *ngFor="let provinciaElement of provinceArray" 
         [province]='provinciaElement'

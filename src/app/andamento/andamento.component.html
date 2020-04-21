@@ -3,7 +3,7 @@
   <div class="totale-andamento__numero-casi">
     <span class="totale-andamento__positivi" *ngIf="andamento">{{andamento[0].totale_positivi}}</span>
     <span class="totale-andamento__incremento">
-      <span class="totale-andamento__incremento-positivi" *ngIf="andamento">+{{andamento[0].variazione_totale_positivi}} </span>
+      <span class="totale-andamento__incremento-positivi" *ngIf="andamento">{{andamento[0].variazione_totale_positivi}} </span>
       <span class="totale-andamento__incremento-data">rispetto a ieri</span>
     </span>
   </div>
